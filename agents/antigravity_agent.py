@@ -63,7 +63,7 @@ class AntigravityAgent(Agent):
 
         result = self.client.generate(
             prompt,
-            workspace=current_workspace
+            workspace=current_workspace.workspace
         )
 
         if result.success:

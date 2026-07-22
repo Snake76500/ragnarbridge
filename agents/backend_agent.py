@@ -1,68 +1,42 @@
-"""
-Backend Agent
-
-Agent spécialisé développement backend
-"""
-
-from .antigravity_agent import AntigravityAgent
+from .base import Agent
 
 
-class BackendAgent(AntigravityAgent):
+class BackendAgent(Agent):
 
 
-    def __init__(
-        self,
-        workspace=None
-    ):
+    def __init__(self):
 
         super().__init__(
-            workspace
+            "Backend Developer"
         )
-
-        self.name = "backend"
-
-        self.capabilities = [
-            "python",
-            "fastapi",
-            "api",
-            "database",
-            "sql"
-        ]
 
 
     def execute(
         self,
         task,
-        workspace=None
+        context=None
     ):
 
+        architecture = None
 
-        original_description = task.description
+
+        if context:
+
+            architecture = (
+                context.read_artifact(
+                    "docs/architecture.md"
+                )
+            )
 
 
-        task.description = f"""
-Tu es un développeur Backend senior.
+        return f"""
+Backend Agent exécuté :
 
-Compétences :
-- Python
-- FastAPI
-- SQLAlchemy
-- PostgreSQL
-- API REST
-- Architecture propre
+Tâche :
+{task.description}
 
-Tu dois réaliser :
 
-{original_description}
+Architecture disponible :
 
-Consignes :
-- Crée directement les fichiers dans le workspace.
-- Produit du code réellement exploitable.
-- Respecte les bonnes pratiques professionnelles.
+{architecture or "Aucune architecture trouvée"}
 """
-
-
-        return super().execute(
-            task,
-            workspace
-        )

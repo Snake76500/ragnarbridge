@@ -15,21 +15,15 @@ class TaskExecutor:
     def __init__(
          self,
          registry: AgentRegistry,
-         workspace=None
+         context=None
      ):
 
         self.registry = registry
-        self.workspace = workspace
-
+        self.context = context
 
     def execute(self, task: object):
 
         
-        print(
-            "EXECUTOR WORKSPACE:",
-            self.workspace
-        )
-
         print(
             f"\nExecution task {task.id}"
         )
@@ -42,15 +36,24 @@ class TaskExecutor:
         task.status = TaskStatus.RUNNING
 
 
-        agent = AgentFactory.create(
-             task.agent,
-            self.workspace
+        agent = self.registry.get(
+            task.agent
         )
 
-        result = agent.execute(
-            task,
-            self.workspace
-        )
+        if agent is None:
+
+            result = (
+                f"Aucun agent trouvé pour {task.agent}"
+            )
+
+        else:
+
+            result = agent.execute(
+                task,
+                self.context
+            )
+
+            self.context.scan_artifacts()
 
         task.result = result
 

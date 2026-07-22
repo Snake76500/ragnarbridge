@@ -5,7 +5,7 @@ Agent spécialisé architecture logicielle
 """
 
 from .antigravity_agent import AntigravityAgent
-
+from artifacts.models import Artifact
 
 
 class ArchitectAgent(AntigravityAgent):
@@ -78,7 +78,20 @@ Contraintes :
 """
 
 
-        return super().execute(
+        result = super().execute(
             task,
             workspace
         )
+
+        if workspace:
+
+            workspace.artifacts.register(
+                Artifact(
+                    name="architecture.md",
+                    path="docs/architecture.md",
+                    artifact_type="documentation",
+                    created_by=self.name
+                )
+        )      
+
+        return result
