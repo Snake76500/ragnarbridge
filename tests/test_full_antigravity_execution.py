@@ -35,3 +35,9 @@ def test_full_antigravity_execution(tmp_path):
     result = executor.execute(task)
     assert result.status == TaskStatus.DONE
 
+if __name__ == "__main__":
+    import tempfile
+    from pathlib import Path
+    with tempfile.TemporaryDirectory() as tmpdir:
+        test_full_antigravity_execution(Path(tmpdir))
+        print("Test exécuté avec succès !")

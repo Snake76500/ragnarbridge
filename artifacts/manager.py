@@ -3,39 +3,38 @@ Artifact Manager
 
 Gestion des productions agents
 """
-from dataclasses import dataclass
-from pathlib import Path
+from typing import List, Union
+from .models import Artifact
 
-
-@dataclass
-class Artifact:
-
-    name: str
-    path: str
-    relative_path: Path
-    extension: str
-    size: int
 
 class ArtifactManager:
 
-
     def __init__(self):
-        self.items = []
+        self.items: List[Artifact] = []
 
-    def register(self, artifact):
+    def register(
+        self,
+        artifact: Union[Artifact, str] = None,
+        name: str = None,
+        path: str = None,
+        artifact_type: str = "other",
+        created_by: str = "system",
+        size: int = 0
+    ) -> Artifact:
+        if isinstance(artifact, Artifact):
+            item = artifact
+        else:
+            item = Artifact(
+                name=name or (artifact if isinstance(artifact, str) else ""),
+                path=path or (artifact if isinstance(artifact, str) else ""),
+                artifact_type=artifact_type,
+                created_by=created_by,
+                size=size
+            )
 
-        # artifact.list
-        # artifact = Artifact(
-        #     name=name,
-        #     path=str(path),
-        #     type=artifact_type
-        # )
+        self.items.append(item)
+        return item
 
-        self.items.append(
-            artifact
-        )
-
-
-    def list(self):
-
+    def list(self) -> List[Artifact]:
         return self.items
+
