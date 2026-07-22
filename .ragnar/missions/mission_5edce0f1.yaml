@@ -1,0 +1,11 @@
+id: mission_5edce0f1
+project: demo_ai
+goal: "Cr\xE9er une application FastAPI compl\xE8te"
+status: CREATED
+created_at: '2026-07-22T10:01:10.115783'
+steps:
+- Analyse du besoin
+- "D\xE9finition architecture"
+- "G\xE9n\xE9ration code"
+- Tests
+- Documentation

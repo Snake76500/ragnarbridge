@@ -1,0 +1,26 @@
+id: mission_db5d7953
+project: demo_ai
+goal: "Cr\xE9er une API de gestion de stock"
+status: CREATED
+created_at: '2026-07-22T11:49:04.573283'
+tasks:
+- id: 1
+  agent: Architecte Logiciel
+  description: "Analyser le besoin et d\xE9finir l'architecture"
+  status: PENDING
+  result: null
+- id: 2
+  agent: "D\xE9veloppeur Backend"
+  description: "Cr\xE9er l'API backend"
+  status: PENDING
+  result: null
+- id: 3
+  agent: "D\xE9veloppeur Frontend"
+  description: "Cr\xE9er l'interface utilisateur"
+  status: PENDING
+  result: null
+- id: 4
+  agent: QA
+  description: "Cr\xE9er les tests"
+  status: PENDING
+  result: null
