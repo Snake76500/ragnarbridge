@@ -25,7 +25,11 @@ def generate_code(prompt: str) -> str:
     Generate code using Antigravity.
     """
 
-    return antigravity.generate(prompt)
+    res = antigravity.generate(prompt)
+    if res.success:
+        return res.output
+    return f"Error: {res.error}"
+
 
 
 register_project_tools(mcp)

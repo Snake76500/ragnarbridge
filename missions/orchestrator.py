@@ -18,12 +18,12 @@ from workspaces.manager import WorkspaceManager
 class MissionOrchestrator:
 
 
-    def __init__(self):
+    def __init__(self, base_path="projects"):
 
         self.mission_manager = MissionManager()
 
         self.workspace_manager = WorkspaceManager(
-            base_path="/home/fabien/ragnarlab/projects"
+            base_path=base_path
         )
 
         self.ollama_planner = OllamaPlanner()

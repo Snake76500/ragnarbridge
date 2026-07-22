@@ -2,37 +2,18 @@ from agents.registry import AgentRegistry
 from agents.antigravity_agent import AntigravityAgent
 from missions.tasks import Task
 
-registry = AgentRegistry()
 
+def test_antigravity_agent_registration():
+    registry = AgentRegistry()
+    antigravity = AntigravityAgent()
 
-antigravity = AntigravityAgent()
+    registry.register(
+        "developer",
+        antigravity
+    )
 
+    assert "developer" in registry.list_agents()
+    agent = registry.get("developer")
+    assert agent is not None
+    assert agent.name == "antigravity"
 
-registry.register(
-    "developer",
-    antigravity
-)
-
-
-print("Agents :")
-print(registry.list_agents())
-
-
-agent = registry.get(
-    "developer"
-)
-
-
-task = Task(
-    id=1,
-    agent="developer",
-    description="Créer une fonction Python qui calcule la TVA"
-)
-
-
-print("\nExecution :")
-
-result = agent.execute(task)
-
-
-print(result)

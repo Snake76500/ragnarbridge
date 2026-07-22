@@ -21,12 +21,7 @@ class AgentContext:
     )
 
     def artifacts(self):
-
-        return self.workspace.artifacts.register(
-                    name=artifact["name"],
-                    path=artifact["path"],
-                    artifact_type=artifact["type"]
-                )
+        return self.workspace.artifacts.list()
 
     def read_artifact(
         self,
@@ -107,3 +102,4 @@ class AgentContext:
                 path=artifact["path"],
                 artifact_type=artifact["type"]
             )
+

@@ -13,4 +13,5 @@ providers:
     url: http://localhost:11434
 
 workspace:
-  path: /home/fabien/ragnarlab/projects
+  path: ./projects
+

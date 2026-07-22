@@ -1,38 +1,19 @@
 from missions.executor import TaskExecutor
-from missions.tasks import Task
+from missions.tasks import Task, TaskStatus
+from agents.registry import AgentRegistry
 
 
+def test_task_executor():
+    registry = AgentRegistry()
+    executor = TaskExecutor(registry=registry)
 
-task = Task(
+    task = Task(
+        id=1,
+        agent="Développeur Backend",
+        description="Créer une API FastAPI"
+    )
 
-    id=1,
+    result = executor.execute(task)
+    assert result.status == TaskStatus.DONE
+    assert "Aucun agent trouvé" in result.result
 
-    agent="Développeur Backend",
-
-    description=
-    "Créer une API FastAPI"
-
-)
-
-
-
-executor = TaskExecutor()
-
-
-
-result = executor.execute(task)
-
-
-
-print("\nRESULTAT:")
-print(result)
-
-
-
-print("\nSTATUS:")
-print(result.status)
-
-
-
-print("\nOUTPUT:")
-print(result.result)

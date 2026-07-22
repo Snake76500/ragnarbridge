@@ -53,7 +53,9 @@ class TaskExecutor:
                 self.context
             )
 
-            self.context.scan_artifacts()
+            if self.context and hasattr(self.context, "scan_artifacts"):
+                self.context.scan_artifacts()
+
 
         task.result = result
 

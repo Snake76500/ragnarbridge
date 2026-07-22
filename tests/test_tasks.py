@@ -1,17 +1,14 @@
-from missions.tasks import Task
+from missions.tasks import Task, TaskStatus
 
 
-task = Task(
+def test_task_creation():
+    task = Task(
+        id=1,
+        agent="Backend Developer",
+        description="Créer API FastAPI"
+    )
 
-    id=1,
+    assert task.id == 1
+    assert task.status == TaskStatus.PENDING
+    assert task.status.value == "PENDING"
 
-    agent="Backend Developer",
-
-    description="Créer API FastAPI"
-
-)
-
-
-print(task)
-
-print(task.status.value)

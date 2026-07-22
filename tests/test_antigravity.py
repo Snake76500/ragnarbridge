@@ -1,10 +1,7 @@
 from adapters.antigravity.client import AntigravityClient
 
 
-client = AntigravityClient()
+def test_antigravity_client_init():
+    client = AntigravityClient()
+    assert client.model == "gemini-3.1-pro-high"
 
-response = client.generate(
-    "Explique en une phrase ce que fait une API REST"
-)
-
-print(response)

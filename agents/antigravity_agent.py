@@ -19,6 +19,7 @@ class AntigravityAgent(Agent):
         super().__init__(
             "antigravity"
         )
+        self.workspace = workspace
 
         self.client = AntigravityClient(
             workspace=workspace
@@ -31,10 +32,11 @@ class AntigravityAgent(Agent):
             or self.workspace
         )
 
+        ws_obj = getattr(current_workspace, "workspace", current_workspace)
         workspace_path = (
-            current_workspace.path
-            if hasattr(current_workspace, "path")
-            else current_workspace
+            ws_obj.path
+            if hasattr(ws_obj, "path")
+            else ws_obj
         )
 
         prompt = f"""
@@ -63,7 +65,7 @@ class AntigravityAgent(Agent):
 
         result = self.client.generate(
             prompt,
-            workspace=current_workspace.workspace
+            workspace=ws_obj
         )
 
         if result.success:

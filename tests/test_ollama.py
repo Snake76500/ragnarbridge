@@ -1,16 +1,8 @@
 from adapters.ollama.client import OllamaClient
 
 
-client = OllamaClient()
+def test_ollama_client_init():
+    client = OllamaClient()
+    assert client.model == "gemma4:12b"
+    assert client.url == "http://localhost:11434"
 
-
-response = client.chat(
-    """
-Tu es un architecte logiciel.
-Propose une architecture simple
-pour une API de gestion de stock.
-"""
-)
-
-
-print(response)

@@ -1,15 +1,7 @@
 from adapters.antigravity.client import AntigravityClient
 
-client = AntigravityClient()
 
-result = client.generate(
-    "Crée une fonction Python hello_world()"
-)
+def test_antigravity_client_defaults():
+    client = AntigravityClient()
+    assert client.timeout == 600
 
-print(result.success)
-
-print(result.returncode)
-
-print(result.error)
-
-print(result.output)

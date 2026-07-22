@@ -4,11 +4,12 @@ from .base import Agent
 class BackendAgent(Agent):
 
 
-    def __init__(self):
+    def __init__(self, workspace=None):
 
         super().__init__(
             "Backend Developer"
         )
+        self.workspace = workspace
 
 
     def execute(

@@ -84,14 +84,16 @@ Contraintes :
         )
 
         if workspace:
-
-            workspace.artifacts.register(
-                Artifact(
-                    name="architecture.md",
-                    path="docs/architecture.md",
-                    artifact_type="documentation",
-                    created_by=self.name
+            ws_obj = getattr(workspace, "workspace", workspace)
+            if hasattr(ws_obj, "artifacts"):
+                ws_obj.artifacts.register(
+                    Artifact(
+                        name="architecture.md",
+                        path="docs/architecture.md",
+                        artifact_type="documentation",
+                        created_by=self.name
+                    )
                 )
-        )      
 
         return result
+
