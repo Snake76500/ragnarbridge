@@ -22,7 +22,6 @@ venv/
 .pytest_cache/
 
 # Generated files
-workspaces/
 projects/
 
 # Local AI data
