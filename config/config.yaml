@@ -1,0 +1,16 @@
+ragnarbridge:
+  name: RagnarBridge
+  version: 0.1
+
+providers:
+
+  antigravity:
+    enabled: true
+    command: agy
+
+  ollama:
+    enabled: true
+    url: http://localhost:11434
+
+workspace:
+  path: /home/fabien/ragnarlab/projects
